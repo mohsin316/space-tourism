@@ -1,5 +1,5 @@
 // imports
-import { BrowserRouter, Route, Routes, useLocation  } from 'react-router-dom';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
 
 // styles
 import './App.css';
@@ -11,7 +11,6 @@ import Crew from './pages/crew/Crew'
 import Technology from './pages/technology/Technology'
 import Navbar from './components/Navbar';
 import { useState } from 'react';
-import { useCollection } from './hooks/useCollection';
 
 function App() {
   const [currentTab, setCurrentTab] = useState('home')
