@@ -1,0 +1,22 @@
+.grid-container--home{
+    padding-bottom: max(6rem, 20vh);
+    align-items: end;
+}
+
+.App.home{
+    background-image: url('../../assets/home/background-home-mobile.jpg');
+}
+
+@media (min-width: 35rem) {
+    .App.home{
+        background-position: center center;
+        background-image: url('../../assets/home/background-home-tablet.jpg');
+    }
+    
+}
+@media (min-width: 45rem) {
+    .App.home{
+        background-image: url('../../assets/home/background-home-desktop.jpg');
+    }
+    
+}

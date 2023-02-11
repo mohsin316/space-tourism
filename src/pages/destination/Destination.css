@@ -1,0 +1,114 @@
+.App.destination{
+    background-image: url('../../assets/destination/background-destination-mobile.jpg');
+}
+
+@media (min-width: 35rem) {
+    .App.destination{
+        background-position: center center;
+        background-image: url('../../assets/destination/background-destination-tablet.jpg');
+    }
+    
+}
+@media (min-width: 45rem) {
+    .App.destination{
+        background-image: url('../../assets/destination/background-destination-desktop.jpg');
+    }
+    
+}
+
+.grid-container--destination{
+    --flow-space:2rem;
+    grid-template-areas: 
+        'title'
+        'image'
+        'tabs'
+        'info';
+}
+
+.numbered-title{
+    grid-area: title;
+}
+
+.grid-container--destination img{
+    grid-area: image;
+    max-width: 60%;
+}
+
+.grid-container--destination > .tab-list{
+    --gap: 1rem;
+    grid-area: tabs;
+}
+
+
+.grid-container--destination > .destination-info{
+    grid-area: info;
+}
+
+.destination-meta{
+    flex-direction: column;
+    border-top: 1px solid hsl( var(--clr-white) / .25);
+    padding-top: 2.5rem;
+    margin-top: 2.5rem;
+}
+
+.destination-meta p{
+    font-size: 1.75rem;
+}
+
+.tab-list > *{
+    background-color: hsl( var(--clr-white) / 0); 
+}
+
+@media (min-width: 35em) {
+    
+    .numbered-title {
+        justify-self: start;
+        margin-top: 2rem;
+    }
+
+    .destination-meta{
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
+
+.grid-container--destination h2{
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 45em) {
+    .grid-container--destination{
+        min-height: max-content;
+        align-items: start;
+        column-gap: 10rem;
+        margin-right: 0;
+        justify-items: start;
+        grid-template-areas: 
+            '. title title .'
+            '. image tabs .'
+            '. image info .'
+    }
+
+    .grid-container--destination > .destination-info{
+        grid-area: info;
+    }
+
+    .grid-container--destination img{
+        grid-area: image;
+        max-width: 100%;
+    }
+
+    .destination-meta{
+        justify-content: start;
+        --gap: min(5vw, 6rem);
+    }
+
+    .grid-container--destination .tab-list{
+        gap: 1rem;
+    }
+    .grid-container--destination .tab-list > *{
+        background: transparent;
+        font-size: 1.25rem;
+    }
+}
+
