@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
-import { useParams, useLocation } from 'react-router-dom'
 import { useCollection } from '../../hooks/useCollection'
 
 import './Destination.css'
 
 export default function Destination({ currentTab ,changeTab}) {
 
-  const {documents, error, isPending} = useCollection('destinations')
+  const {documents, isPending} = useCollection('destinations')
 
   const [planet, setPlanet] = useState('europa')
 

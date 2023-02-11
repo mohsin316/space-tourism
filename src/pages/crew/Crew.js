@@ -5,7 +5,7 @@ import { useCollection } from '../../hooks/useCollection'
 
 export default function Crew({ currentTab ,changeTab}) {
 
-  const {documents, error, isPending} = useCollection('crew')
+  const {documents, isPending} = useCollection('crew')
 
   const [position, setPosition] = useState('commander')
 
@@ -46,7 +46,6 @@ export default function Crew({ currentTab ,changeTab}) {
             <button
               key={document.id} 
               onClick={e => setPosition(document.id)}
-              aria-selected={position === document.id ? 'true' : 'false'}
             >
               <span className="sr-only">{`The ${document.role}`}</span>
             </button>

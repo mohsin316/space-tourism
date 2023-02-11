@@ -4,7 +4,7 @@ import { useCollection } from '../../hooks/useCollection'
 
 export default function Technology({ currentTab ,changeTab}) {
 
-  const {documents, error, isPending} = useCollection('technology')
+  const {documents, isPending} = useCollection('technology')
 
   const [tech, setTech] = useState('capsule')
 
