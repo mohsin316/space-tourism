@@ -43,7 +43,7 @@ export default function Technology({ currentTab ,changeTab}) {
             <button
             key={document.id} 
             onClick={e => setTech(document.id)}
-            aria-selected={tech === document.id ? 'true' : 'false'}
+            // aria-selected={tech === document.id ? 'true' : 'false'}
           >
             <span>{index + 1}</span>
       </button>
