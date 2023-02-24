@@ -1,7 +1,6 @@
 import './Home.css'
 import { motion as m } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import Loading from '../../components/Loading'
 
 export default function Home() {
   return (
