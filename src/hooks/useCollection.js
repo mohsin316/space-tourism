@@ -17,23 +17,17 @@ export const useCollection = (c, _query, _orderBy) => {
     setIsPending(true)
     let ref = collection(db,c)
 
-    // if (query) {
-    //   ref = ref.where(...query)
-    // }
-    // if (orderBy) {
-    //   ref = ref.orderBy(...orderBy)
-    // }
-
     const unsubscribe = onSnapshot(ref, snapshot => {
       let results = []
       snapshot.docs.forEach(doc => {
         results.push({...doc.data(), id: doc.id})
-        // console.log('id is ', doc.id)
       });
       
       // update state
-      setDocuments(results)
-      setIsPending(false)
+      setTimeout(() => {
+        setDocuments(results)
+        setIsPending(false)
+      }, 500);
       setError(null)
     }, error => {
       console.log(error)

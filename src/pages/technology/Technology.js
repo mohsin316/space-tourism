@@ -1,6 +1,8 @@
 import './Technology.css'
 import { useEffect, useState } from 'react'
 import { useCollection } from '../../hooks/useCollection'
+import { motion as m } from 'framer-motion'
+import Loading from '../../components/Loading'
 
 export default function Technology({ currentTab ,changeTab}) {
 
@@ -34,11 +36,14 @@ export default function Technology({ currentTab ,changeTab}) {
 
 
   return (
-      <main className='grid-container grid-container--technology'>
+      <m.main 
+        initial={{opacity: 0}}
+        animate={{opacity:1}}
+        exit={{opacity:0}}
+        className='grid-container grid-container--technology'>
         <h1 className='numbered-title'><span aria-hidden='true'>03</span>Space launch 101</h1>
     
         <div className="number-indicators flex">
-          {isPending && <div>Loading..</div>}
           {documents && documents.map((document, index) => (
             <button
             key={document.id} 
@@ -51,7 +56,7 @@ export default function Technology({ currentTab ,changeTab}) {
         </div>
         
         <article className='crew-details flow'>
-            {isPending && <div>Loading..</div>}
+            {isPending && <Loading/>}
             {data && (<>
               <header>
                 <h2 className="fs-300 ff-serif uppercase">The terminology...</h2>
@@ -69,6 +74,6 @@ export default function Technology({ currentTab ,changeTab}) {
           </picture>
             </>)}
         
-      </main>
+      </m.main>
   )
 }

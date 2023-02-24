@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useCollection } from '../../hooks/useCollection'
+import { motion as m } from 'framer-motion'
+import Loading from '../../components/Loading'
 
 import './Destination.css'
 
@@ -37,14 +39,17 @@ export default function Destination({ currentTab ,changeTab}) {
 
 
   return (
-        <main className='grid-container grid-container--destination flow'>
+        <m.main 
+          initial={{opacity: 0}}
+          animate={{opacity:1}}
+          exit={{opacity:0}}
+          className='grid-container grid-container--destination flow'>
         <h1 className='numbered-title'><span aria-hidden='true'>01</span>Pick your destination</h1>
-    
         <img src={`./assets/destination/image-${planet}.png`} alt="the moon" />
 
         
         <div className="tab-list underline-indicators flex">
-        {isPending && <div>Loading..</div>}
+        {isPending && <Loading/>}
         {documents && documents.map(document => (
             <button 
               key={document.id} 
@@ -56,7 +61,8 @@ export default function Destination({ currentTab ,changeTab}) {
         </div>
 
         <article className='destination-info'>
-        {isPending && <div>Loading..</div>}
+        {isPending && <Loading/>}
+        
           {data && (<>
             <h2 className='fs-800 uppercase ff-serif'>{data[0].name}</h2>
             <p>{data[0].description}</p>
@@ -74,6 +80,6 @@ export default function Destination({ currentTab ,changeTab}) {
           </>)}
         </article>
 
-      </main>
+      </m.main>
   )
 }

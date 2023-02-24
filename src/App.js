@@ -1,5 +1,5 @@
 // imports
-import { BrowserRouter, Route, Routes} from 'react-router-dom';
+import { Route, Routes, useLocation} from 'react-router-dom';
 
 // styles
 import './App.css';
@@ -11,11 +11,12 @@ import Crew from './pages/crew/Crew'
 import Technology from './pages/technology/Technology'
 import Navbar from './components/Navbar';
 import { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
   const [currentTab, setCurrentTab] = useState('home')
   // console.log(documents)
-  
+  const location = useLocation()
 
   const changeTab = (newTab) => {
     setCurrentTab(newTab)
@@ -27,16 +28,15 @@ function App() {
 
   return (
     <div className={`App ${currentTab}`}>
-      <BrowserRouter>
       <Navbar currentTab={currentTab} changeTab = {changeTab}/>
-        <Routes>
+      <AnimatePresence mode='wait'>
+        <Routes location={location} key={location.pathname}>
           <Route path='/' element={<Home/>}/>
           <Route path='/destination' element={<Destination changeTab = {changeTab} />}/>
           <Route path='/crew' element={<Crew changeTab = {changeTab} />}/>
           <Route path='/technology' element={<Technology changeTab = {changeTab} />}/>
         </Routes>
-
-      </BrowserRouter>
+      </AnimatePresence>
     </div>
   );
 }

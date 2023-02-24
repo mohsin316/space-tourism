@@ -1,7 +1,8 @@
 import './Crew.css'
 import { useEffect, useState } from 'react'
 import { useCollection } from '../../hooks/useCollection'
-
+import { motion as m } from 'framer-motion'
+import Loading from '../../components/Loading'
 
 export default function Crew({ currentTab ,changeTab}) {
 
@@ -37,11 +38,14 @@ export default function Crew({ currentTab ,changeTab}) {
 
 
   return (
-      <main className='grid-container grid-container--crew flow'>
+      <m.main 
+        initial={{opacity: 0}}
+        animate={{opacity:1}}
+        exit={{opacity:0}}
+        className='grid-container grid-container--crew flow'>
         <h1 className='numbered-title'><span aria-hidden='true'>02</span>Meet your crew</h1>
     
         <div className="dot-indicators flex">
-          {isPending && <div>Loading..</div>}
           {documents && documents.map(document => (
             <button
               key={document.id} 
@@ -54,7 +58,7 @@ export default function Crew({ currentTab ,changeTab}) {
         </div>
         
         <article className='crew-details flow'>
-            {isPending && <div>Loading..</div>}
+            {isPending && <Loading/>}
             {data && (<>
               <header>
                 <h2 className="fs-600 ff-serif uppercase">{data[0].id}</h2>
@@ -65,6 +69,6 @@ export default function Crew({ currentTab ,changeTab}) {
         </article>
 
         <img src={`./assets/crew/image-${position}.png`} alt="the moon" />
-      </main>
+      </m.main>
   )
 }
