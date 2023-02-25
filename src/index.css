@@ -298,9 +298,13 @@ select {
     transform: scale(1.5);
 }
 
-
-
 .tab-list {
     --gap: 2rem;
+}
+
+@media (max-width: 35em){
+    .large-button {
+        margin-top: 3rem;
+    }
 }
 
